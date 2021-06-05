@@ -1,5 +1,7 @@
 class Exam < ApplicationRecord
   belongs_to :college
+  has_many :assigned_exams
+  has_many :users, through: :assigned_exams
 
   validates :start_time, :end_time, presence: true
   validate :end_time_after_start_time

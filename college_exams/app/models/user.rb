@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_many :assigned_exams
+  has_many :exams, through: :assigned_exams
+
   validates :first_name, :last_name, :phone_number, presence: true
   # TODO: There is a probably a more canonical way to format and validate
   # phone numbers. I'm not worrying about that here. This just ensures
