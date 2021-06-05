@@ -5,6 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-(1..5).each do |n|
+5.times do |i|
     College.create()
 end
+
+colleges = College.all
+Exam.create([
+    { college: colleges.first, start_time: DateTime.parse("2021-06-01"), end_time: DateTime.parse("2021-06-30") },
+    { college: colleges.last, start_time: DateTime.parse("2021-07-01"), end_time: DateTime.parse("2021-07-31") }
+])

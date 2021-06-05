@@ -10,11 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_05_174440) do
+ActiveRecord::Schema.define(version: 2021_06_05_180613) do
 
   create_table "colleges", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "exams", force: :cascade do |t|
+    t.integer "college_id", null: false
+    t.datetime "start_time", null: false
+    t.datetime "end_time", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["college_id"], name: "index_exams_on_college_id"
+  end
+
+  add_foreign_key "exams", "colleges"
 end
