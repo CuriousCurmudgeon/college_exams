@@ -1,6 +1,8 @@
 FROM ruby:2.5.8
 
-RUN apt-get update && apt-get install -y build-essential libpq-dev postgresql-client
+# Install sqlite3
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+    && apt-get -y install --no-install-recommends sqlite3
+
+# Install Rails
 RUN gem install rails
-RUN mkdir /app
-WORKDIR /app
