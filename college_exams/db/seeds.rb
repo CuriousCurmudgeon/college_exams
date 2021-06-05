@@ -14,3 +14,9 @@ Exam.create([
     { college: colleges.first, start_time: DateTime.parse("2021-06-01"), end_time: DateTime.parse("2021-06-30") },
     { college: colleges.last, start_time: DateTime.parse("2021-07-01"), end_time: DateTime.parse("2021-07-31") }
 ])
+
+User.create([
+    { first_name: "Brittany", last_name: "Slayes", phone_number: "1234567890" },
+    { first_name: "Devin", last_name: "Townsend", phone_number: "0293840239" },
+    { first_name: "Floor", last_name: "Jansen", phone_number: "0630812321" }
+])
