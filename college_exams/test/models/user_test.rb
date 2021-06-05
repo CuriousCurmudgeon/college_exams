@@ -25,4 +25,13 @@ class UserTest < ActiveSupport::TestCase
     user = User.new(first_name: "Jane", last_name: "Doe", phone_number: "1234567890")
     assert user.save
   end
+
+  test "should save when adding Exam" do
+    user = User.new(first_name: "Jane", last_name: "Doe", phone_number: "1234567890")
+
+    college = College.create
+    exam = Exam.new(college: college, start_time: DateTime.parse("2021-06-01"), end_time: DateTime.parse("2021-06-30"))
+    user.exams << exam
+    assert user.save
+  end
 end
