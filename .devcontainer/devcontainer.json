@@ -1,0 +1,7 @@
+{
+    "name": "College Exam",
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "web",
+    "workspaceFolder": "/app",
+    "shutdownAction": "stopCompose"
+}
