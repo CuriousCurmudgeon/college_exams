@@ -37,4 +37,50 @@ class ExamTest < ActiveSupport::TestCase
     exam = Exam.new(college: college, start_time: DateTime.parse("2021-06-01"), end_time: DateTime.parse("2021-06-30"))
     assert exam.save
   end
+
+  test "in_exam_window? should return true if param equals start_time" do
+    exam = new_date_testing_exam
+    assert exam.in_exam_window?(exam.start_time)
+  end
+
+  test "in_exam_window? should return false if param one day before start_time" do
+    exam = new_date_testing_exam
+    assert_not exam.in_exam_window?(exam.start_time - 1.day)
+  end
+
+  test "in_exam_window? should return false if param one second before start_time" do
+    exam = new_date_testing_exam
+    assert_not exam.in_exam_window?(exam.start_time - 1.second)
+  end
+
+  test "in_exam_window? should return true if param between start_time and end_time" do
+    exam = new_date_testing_exam
+    assert exam.in_exam_window?(exam.start_time + 1.day)
+  end
+
+  test "in_exam_window? should return true if param one second after start_time" do
+    exam = new_date_testing_exam
+    assert exam.in_exam_window?(exam.start_time + 1.second)
+  end
+
+  test "in_exam_window? should return true if param equals end_time" do
+    exam = new_date_testing_exam
+    assert exam.in_exam_window?(exam.end_time)
+  end
+
+  test "in_exam_window? should return false if param one day past end_time" do
+    exam = new_date_testing_exam
+    assert_not exam.in_exam_window?(exam.end_time + 1.day)
+  end
+
+  test "in_exam_window? should return false if param one second past end_time" do
+    exam = new_date_testing_exam
+    assert_not exam.in_exam_window?(exam.end_time + 1.second)
+  end
+
+  private
+
+  def new_date_testing_exam
+    Exam.new(start_time: DateTime.parse("2021-06-01"), end_time: DateTime.parse("2021-06-30"))
+  end
 end

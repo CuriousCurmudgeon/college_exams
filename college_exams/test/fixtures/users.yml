@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  first_name: MyString
-  last_name: MyString
-  phone_number: MyString
+devin:
+  first_name: Devin
+  last_name: Townsend
+  phone_number: 0293840239
 
-two:
-  first_name: MyString
-  last_name: MyString
-  phone_number: MyString
+floor:
+  first_name: Floor
+  last_name: Jansen
+  phone_number: 0630812321

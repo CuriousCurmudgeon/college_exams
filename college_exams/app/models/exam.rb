@@ -6,6 +6,10 @@ class Exam < ApplicationRecord
   validates :start_time, :end_time, presence: true
   validate :end_time_after_start_time
 
+  def in_exam_window?(date_time)
+    date_time >= start_time && date_time <= end_time
+  end
+
   private
 
   def end_time_after_start_time
