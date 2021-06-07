@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_07_010545) do
+ActiveRecord::Schema.define(version: 2021_06_07_012900) do
 
   create_table "api_requests", force: :cascade do |t|
     t.string "endpoint"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2021_06_07_010545) do
     t.string "phone_number", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["first_name", "last_name", "phone_number"], name: "index_users_on_first_name_and_last_name_and_phone_number", unique: true
   end
 
   add_foreign_key "assigned_exams", "exams"
