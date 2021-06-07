@@ -59,6 +59,7 @@ class AssignedExamsControllerTest < ActionDispatch::IntegrationTest
       start_time: "2021-06-07"}, as: :json
 
       assert_response :bad_request
+      assert_json_error 'Exam not found'
   end
 
   test "post should return 400 if college_id invalid" do
@@ -71,6 +72,7 @@ class AssignedExamsControllerTest < ActionDispatch::IntegrationTest
       start_time: "2021-06-07"}, as: :json
 
       assert_response :bad_request
+      assert_json_error 'Exam is for different college'
   end
 
   test "post should return 400 if start_time not in exam window" do
@@ -84,5 +86,13 @@ class AssignedExamsControllerTest < ActionDispatch::IntegrationTest
       start_time: exam.start_time - 1.day}, as: :json
 
       assert_response :bad_request
+      assert_json_error 'Start time not in exam window'
+  end
+
+  private
+
+  def assert_json_error(message)
+    json_response = JSON.parse(response.body)
+    assert_equal message, json_response["error"]
   end
 end
