@@ -10,4 +10,8 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def assert_json_error(message)
+    json_response = JSON.parse(response.body)
+    assert_equal message, json_response["error"]
+  end
 end

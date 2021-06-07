@@ -88,11 +88,4 @@ class AssignedExamsControllerTest < ActionDispatch::IntegrationTest
       assert_response :bad_request
       assert_json_error 'Start time not in exam window'
   end
-
-  private
-
-  def assert_json_error(message)
-    json_response = JSON.parse(response.body)
-    assert_equal message, json_response["error"]
-  end
 end
